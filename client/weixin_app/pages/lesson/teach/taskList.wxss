@@ -1,0 +1,7 @@
+.weui-label_small {
+  width: 50px;
+}
+
+.weui-uploader__img__label {
+  text-align: center;
+}

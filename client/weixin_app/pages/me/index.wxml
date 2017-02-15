@@ -1,0 +1,78 @@
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-panel weui-panel_access">
+      <view class="weui-panel__hd">我学习的课程</view>
+      <view class="weui-panel__bd">
+        <block wx:for="{{lessonJoin}}" wx:for-item="lesson" wx:key="lesson_id">
+          <navigator url="/pages/lesson/study/study?lesson_id={{lesson.lesson_id}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+            <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+              <view class="weui-media-box__title">
+                {{lesson.title}}
+              </view>
+            </view>
+          </navigator>
+        </block>
+      </view>
+      <view class="weui-panel__ft">
+        <view class="weui-cell weui-cell_access weui-cell_link">
+          <view class="weui-cell__bd">
+            <navigator url="/pages/lesson/myJoin/myJoin">查看更多</navigator>
+          </view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </view>
+      </view>
+    </view>
+    <block wx:if="{{userInfo.is_admin}}">
+      <view class="weui-panel weui-panel_access">
+        <view class="weui-panel__hd">我创建的课程
+          <view class="weui-vcode-btn">
+            <navigator url="/pages/lesson/create/create">
+              创建课程
+            </navigator>
+          </view>
+        </view>
+        <view class="weui-panel__bd">
+          <block wx:for="{{lessonCreate}}" wx:for-item="lesson" wx:key="lesson_id">
+            <navigator url="/pages/lesson/create/create?lesson_id={{lesson.lesson_id}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+              <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                <view class="weui-media-box__title">
+                  {{lesson.title}}
+                </view>
+              </view>
+            </navigator>
+          </block>
+        </view>
+        <view class="weui-panel__ft">
+          <view class="weui-cell weui-cell_access weui-cell_link">
+            <view class="weui-cell__bd">
+              <navigator url="/pages/lesson/myStart/myStart">查看更多</navigator>
+            </view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+          </view>
+        </view>
+      </view>
+    </block>
+    <view class="weui-panel weui-panel_access">
+      <view class="weui-panel__hd">我讲解的课程</view>
+      <view class="weui-panel__bd">
+        <block wx:for="{{lessonTeach}}" wx:for-item="lesson" wx:key="lesson_id">
+          <navigator url="/pages/lesson/teach/teach?lesson_id={{lesson.lesson_id}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+            <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+              <view class="weui-media-box__title">
+                {{lesson.title}}
+              </view>
+            </view>
+          </navigator>
+        </block>
+      </view>
+      <view class="weui-panel__ft">
+        <view class="weui-cell weui-cell_access weui-cell_link">
+          <view class="weui-cell__bd">
+            <navigator url="/pages/lesson/myTeach/myTeach">查看更多</navigator>
+          </view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

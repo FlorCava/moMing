@@ -1,0 +1,37 @@
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-cells__title">作业图片</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__bd">
+          <view class="weui-uploader__files" style="margin-top:9px;">
+            <block wx:for="{{task.images}}" wx:for-item="image" wx:key="image" wx:for-index="index">
+              <view class="weui-uploader__file">
+                <image class="weui-uploader__img" src="{{image}}" mode="aspectFill" data-image-url-index="{{index}}" bindtap="bindPreviewImage" />
+              </view>
+            </block>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells__title ">作业说明</view>
+    <view class="weui-cells weui-cells_after-title ">
+      <view class="weui-cell ">
+        <view class="weui-cell__bd ">
+          <text>{{task.description}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells__title ">作业点评</view>
+    <view class="weui-cells weui-cells_after-title ">
+      <view class="weui-cell ">
+        <view class="weui-cell__bd ">
+          <textarea class="weui-textarea " value="{{task.review}}" placeholder="请输入作业点评" style="height: 3.3em " bindinput="bindReviewChange" />
+        </view>
+      </view>
+    </view>
+    <view class="weui-btn-area ">
+      <button class="weui-btn" type="primary" bindtap="bindSaveButton">确定</button>
+    </view>
+  </view>
+</view>

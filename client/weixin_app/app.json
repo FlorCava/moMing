@@ -1,0 +1,46 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/index/index",
+    "pages/me/index",
+    "pages/me/info/info",
+    "pages/me/info/name/name",
+    "pages/me/info/tel/tel",
+    "pages/me/info/email/email",
+    "pages/lesson/lesson",
+    "pages/lesson/create/create",
+    "pages/lesson/teach/teach",
+    "pages/lesson/teach/createContent",
+    "pages/lesson/teach/taskList",
+    "pages/lesson/teach/taskReview",
+    "pages/lesson/study/study",
+    "pages/lesson/study/task",
+    "pages/lesson/study/createTask"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#EDB400",
+    "navigationBarTitleText": "墨铭学堂",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#479de6",
+    "borderStyle": "white",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "学堂",
+        "iconPath":"images/tab_lesson.png",
+        "selectedIconPath":"images/tab_lesson_hl.png"
+      },
+      {
+        "pagePath": "pages/me/index",
+        "text": "我的",
+        "iconPath":"images/tab_me.png",
+        "selectedIconPath":"images/tab_me_hl.png"
+      }
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-panel weui-panel_access">
+      <view class="weui-panel__hd">开放的课程列表</view>
+      <view class="weui-panel__bd">
+        <block wx:for="{{lessonOpen}}" wx:for-item="lesson" wx:key="lesson_id">
+          <navigator url="/pages/lesson/lesson?lesson_id={{lesson.lesson_id}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+            <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+              <image class="weui-media-box__thumb" src="{{lesson.base_image}}" mode="aspectFill" />
+            </view>
+            <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+              <view class="weui-media-box__title">
+                {{lesson.title}}
+              </view>
+              <view class="weui-media-box__desc">讲师 | {{lesson.teacher}}</view>
+              <view class="weui-media-box__desc">时长 | {{lesson.duration}}</view>
+            </view>
+          </navigator>
+        </block>
+      </view>
+      <block wx:if="{{currentPage < totalPages}}">
+        <view class="weui-panel__ft">
+          <view class="weui-cell weui-cell_access weui-cell_link" bindtap="bindLoadMore">
+            <view class="weui-cell__bd">
+              <view class="weui-loading" hidden="{{!loading}}"></view>
+              加载更多
+            </view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,3 @@
+.weui-label_small {
+  width: 50px;
+}

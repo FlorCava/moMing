@@ -1,0 +1,16 @@
+.weui-media-box_padding {
+  padding: 0px;
+}
+
+.weui-footer {
+  margin-bottom: 50px;
+}
+
+.weui-footer_fixed-bottom {
+  margin-bottom: 0;
+}
+
+.swiper {
+  width: 100%;
+  text-align: center;
+}

@@ -1,0 +1,14 @@
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.weui-label_small {
+  width: 50px;
+}
+
+.weui-uploader__img__label {
+  text-align: center;
+}

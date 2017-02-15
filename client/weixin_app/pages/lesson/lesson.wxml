@@ -1,0 +1,46 @@
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-panel">
+      <view class="weui-panel__bd">
+        <view class="weui-media-box weui-media-box_text weui-media-box_padding">
+          <view>
+            <swiper class="swiper" indicator-dots="true" autoplay="true" interval="5000" duration="1000">
+              <block wx:for="{{lesson.images}}" wx:key="{{index}}">
+                <swiper-item>
+                  <image src="{{item}}" width="100%" height="300" mode="aspectFill" />
+                </swiper-item>
+              </block>
+            </swiper>
+          </view>
+          <view class="weui-media-box__title weui-media-box__title_in-text">课程 | {{lesson.title}}</view>
+          <view class="weui-media-box__desc">讲师 | {{lesson.teacher}}
+          </view>
+          <view class="weui-media-box__desc">时长 | {{lesson.duration}}
+          </view>
+          <view class="weui-media-box__desc">形式 |
+            <view>
+              <text>{{lesson.detail}}</text>
+            </view>
+          </view>
+          <view class="weui-media-box__desc">开课时间 | {{lesson.start.date}} {{lesson.start.time}} - {{lesson.end.date}} {{lesson.end.time}}
+          </view>
+          <view class="weui-media-box__desc">费用 | {{lesson.fee}}
+          </view>
+          <view class="weui-media-box__desc">费用说明 |
+            <view>
+              <text>{{lesson.fee_description}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="weui-footer">
+      <view class="weui-btn-area ">
+        <button class="weui-btn" type="primary" disabled="{{lesson.me.joined}}" bindtap="bindJoinButton">
+          <view wx:if="{{lesson.me.joined}}">已经报名</view>
+          <view wx:else>立即报名</view>
+        </button>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,40 @@
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-tab">
+      <view class="weui-navbar">
+        <block wx:for-items="{{tabs}}" wx:key="{{index}}">
+          <view id="{{index}}" class="weui-navbar__item {{tabActiveIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="bindTabs">
+            <view class="weui-navbar__title">{{item}}</view>
+          </view>
+        </block>
+        <view class="weui-navbar__slider" style="left: {{tabSliderLeft}}px; transform: translateX({{tabSliderOffset}}px); -webkit-transform: translateX({{tabSliderOffset}}px);"></view>
+      </view>
+      <view class="weui-tab__panel">
+        <view class="weui-tab__content" hidden="{{tabActiveIndex != 0}}">
+          <view class="weui-cells__title">{{date}}待点评的作业
+          </view>
+          <view class="weui-cells weui-cells_after-title">
+            <block wx:for="{{reviewTasks}}" wx:key="{{index}}" wx:for-item="task" wx:for-index="index">
+              <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" data-task="{{task}}" bindtap="bindShowTask">
+                <view class="weui-cell__bd">{{task.date}}的作业</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+              </view>
+            </block>
+          </view>
+        </view>
+        <view class="weui-tab__content" hidden="{{tabActiveIndex != 2}}">
+          <view class="weui-cells__title">全部作业
+          </view>
+          <view class="weui-cells weui-cells_after-title">
+            <!--<block wx:for="{{tasks}}" wx:key="{{index}}" wx:for-item="task" wx:for-index="index">
+              <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" data-task="{{task}}" bindtap="bindShowTask">
+                <view class="weui-cell__bd">{{task.date}}的作业</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+              </view>
+            </block>-->
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

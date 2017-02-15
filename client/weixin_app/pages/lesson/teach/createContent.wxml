@@ -1,0 +1,44 @@
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-cells__title">课程直播地址</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__bd">
+          <input class="weui-input" value="{{content.url}}" placeholder="请输入课程直播地址" bindinput="bindUrlChange" />
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells__title">开课时间</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label weui-label_small">日期</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="date" value="{{content.start.date}}" bindchange="bindStartDateChange">
+            <view class="weui-input">{{content.start.date}}</view>
+          </picker>
+        </view>
+        <view class="weui-cell__hd">
+          <view class="weui-label weui-label_small">时间</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="time" value="{{content.start.time}}" bindchange="bindStartTimeChange">
+            <view class="weui-input">{{content.start.time}}</view>
+          </picker>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells__title ">今日课程说明</view>
+    <view class="weui-cells weui-cells_after-title ">
+      <view class="weui-cell ">
+        <view class="weui-cell__bd ">
+          <textarea class="weui-textarea " value="{{content.content}}" placeholder="请输入今日课程说明" style="height: 3.3em " bindinput="bindContentChange" />
+        </view>
+      </view>
+    </view>
+    <view class="weui-btn-area ">
+      <button class="weui-btn" type="primary" bindtap="bindSaveButton">确定</button>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,139 @@
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">错误提示</view>
+    <view class="weui-cells__title">标题</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__bd">
+          <input class="weui-input" value="{{lesson.title}}" placeholder="请输入课程标题" bindinput="bindTitleChange" />
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells__title">讲师</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__bd">
+          <input class="weui-input" value="{{lesson.teacher}}" placeholder="请输入课程讲师" bindinput="bindTeacherChange" />
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells__title">时长</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__bd">
+          <input class="weui-input" value="{{lesson.duration}}" placeholder="请输入时长" bindinput="bindDurationChange" />
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells__title">开课时间</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label weui-label_small">日期</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="date" value="{{lesson.start.date}}" bindchange="bindStartDateChange">
+            <view class="weui-input">{{lesson.start.date}}</view>
+          </picker>
+        </view>
+        <view class="weui-cell__hd">
+          <view class="weui-label weui-label_small">时间</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="time" value="{{lesson.start.time}}" bindchange="bindStartTimeChange">
+            <view class="weui-input">{{lesson.start.time}}</view>
+          </picker>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells__title">结束时间</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label weui-label_small">日期</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="date" value="{{lesson.end.date}}" bindchange="bindEndDateChange">
+            <view class="weui-input">{{lesson.end.date}}</view>
+          </picker>
+        </view>
+        <view class="weui-cell__hd">
+          <view class="weui-label weui-label_small">时间</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="time" value="{{lesson.end.time}}" bindchange="bindEndTimeChange">
+            <view class="weui-input">{{lesson.end.time}}</view>
+          </picker>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells__title ">讲课形式</view>
+    <view class="weui-cells weui-cells_after-title ">
+      <view class="weui-cell ">
+        <view class="weui-cell__bd ">
+          <textarea class="weui-textarea " value="{{lesson.detail}}" placeholder="请输入讲课形式" style="height: 3.3em " bindinput="bindDetailChange" />
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells__title">费用</view>
+    <view class="weui-cells weui-cells_after-title ">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__bd">
+          <input class="weui-input" value="{{lesson.fee}}" bindinput="bindFeeChange" />
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells__title ">费用说明</view>
+    <view class="weui-cells weui-cells_after-title ">
+      <view class="weui-cell ">
+        <view class="weui-cell__bd ">
+          <textarea class="weui-textarea " value="{{lesson.fee_description}}" placeholder="请输入费用说明" style="height: 3.3em " bindinput="bindFeeDescriptionChange" />
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells__title">设置课程管理员(默认为当前创建课程用户)</view>
+    <view class="weui-cells weui-cells_after-title ">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__bd">
+          <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells__title">状态</view>
+    <view class="weui-cells weui-cells_after-title ">
+      <view class="weui-cell ">
+        <view class="weui-cell__bd">
+          <radio-group class="weui-flex" bindchange="bindStatusChange">
+            <view class="weui-flex__item">
+              <radio value="1" checked="{{lesson.status === '1'}}" />进行中</view>
+            <view class="weui-flex__item">
+              <radio value="2" checked="{{lesson.status === '2'}}" />已结束</view>
+          </radio-group>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells__title">上传课程图片</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__bd">
+          <view class="weui-uploader__input-box" style="margin-top:9px;">
+            <view class="weui-uploader__input" bindtap="bindChooseImage"></view>
+          </view>
+          <view class="weui-uploader__files" style="margin-top:9px;">
+            <block wx:for="{{tempImages}}" wx:for-item="tempImage" wx:key="tempImage" wx:for-index="index">
+              <view class="weui-uploader__file">
+                <image class="weui-uploader__img" src="{{tempImage}}" mode="aspectFill" data-image-url-index="{{index}}" bindtap="bindPreviewImage" />
+                <view class="weui-uploader__img__label">
+                  <icon type="cancel" data-image-url="{{lesson.images[index]}}" data-image-url-index="{{index}}" bindtap="bindRemoveImage" />
+                </view>
+              </view>
+            </block>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="weui-btn-area ">
+      <button class="weui-btn" type="primary" bindtap="bindSaveButton">确定</button>
+    </view>
+  </view>
+</view>

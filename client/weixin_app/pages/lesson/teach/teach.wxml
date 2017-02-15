@@ -1,0 +1,99 @@
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-tab">
+      <view class="weui-navbar">
+        <block wx:for-items="{{tabs}}" wx:key="{{index}}">
+          <view id="{{index}}" class="weui-navbar__item {{tabActiveIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="bindTabs">
+            <view class="weui-navbar__title">{{item}}</view>
+          </view>
+        </block>
+        <view class="weui-navbar__slider" style="left: {{tabSliderLeft}}px; transform: translateX({{tabSliderOffset}}px); -webkit-transform: translateX({{tabSliderOffset}}px);"></view>
+      </view>
+      <view class="weui-tab__panel">
+        <view class="weui-tab__content" hidden="{{tabActiveIndex != 0}}">
+          <view class="weui-panel">
+            <view class="weui-panel__bd">
+              <view class="weui-media-box weui-media-box_text weui-media-box_padding">
+                <view>
+                  <swiper class="swiper" indicator-dots="true" autoplay="true" interval="5000" duration="1000">
+                    <block wx:for="{{lesson.images}}" wx:key="{{index}}">
+                      <swiper-item>
+                        <image src="{{item}}" width="100%" height="300" mode="aspectFill" />
+                      </swiper-item>
+                    </block>
+                  </swiper>
+                </view>
+                <view class="weui-media-box__title weui-media-box__title_in-text">{{lesson.title}}</view>
+                <view class="weui-media-box__desc">已经有{{lesson.join.count}}人报名学习
+                </view>
+                <view class="weui-media-box__desc">讲师 | {{lesson.teacher}}
+                </view>
+                <view class="weui-media-box__desc">时长 | {{lesson.duration}}
+                </view>
+                <view class="weui-media-box__desc">形式 |
+                  <view>
+                    <text>{{lesson.detail}}</text>
+                  </view>
+                </view>
+                <view class="weui-media-box__desc">开课时间 | {{lesson.start.date}} {{lesson.start.time}} - {{lesson.end.date}} {{lesson.end.time}}
+                </view>
+                <view class="weui-media-box__desc">费用 | {{lesson.fee}}
+                </view>
+                <view class="weui-media-box__desc">费用说明 |
+                  <view>
+                    <text>{{lesson.fee_description}}</text>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="weui-footer weui-footer_fixed-bottom" hidden="{{tabActiveIndex != 0}}">
+            <view class="weui-btn-area ">
+              <button class="weui-btn" type="primary" bindtap="bindShareButton">分享课程</button>
+            </view>
+          </view>
+        </view>
+        <view class="weui-tab__content" hidden="{{tabActiveIndex != 1}}">
+          <view class="weui-cells__title">每日课程管理
+            <view class="weui-vcode-btn">
+              <navigator url="/pages/lesson/teach/createContent?lesson_id={{lesson.lesson_id}}">
+                创建每日课程
+              </navigator>
+            </view>
+          </view>
+          <view class="weui-cells weui-cells_after-title">
+            <view class="content-list">
+              <block wx:for="{{contents}}" wx:key="{{index}}" wx:for-item="content" wx:for-index="index">
+                <view class="content-list__item">
+                  <view class="content-flex content-list__item-hd {{contentOpenIndex === index ? 'content-list__item-hd_show' : ''}}" data-content-index="{{index}}" bindtap="bindContentToggle">
+                    <view class="content-flex__item">{{content.startLabel}}的课程</view>
+                    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                  </view>
+                  <view class="content-list__item-bd {{contentOpenIndex === index ? 'content-list__item-bd_show' : ''}}">
+                    <view class="content-cells {{contentOpenIndex === index ? 'content-cells_show' : ''}}">
+                      <view>直播地址：{{content.url}}</view>
+                      <view>时间：{{content.start}}</view>
+                      <view>课程说明：{{content.content}}</view>
+                    </view>
+                  </view>
+                </view>
+              </block>
+            </view>
+          </view>
+        </view>
+        <view class="weui-tab__content" hidden="{{tabActiveIndex != 2}}">
+          <view class="weui-cells__title">作业点评
+          </view>
+          <view class="weui-cells weui-cells_after-title">
+            <block wx:for="{{groupTasks}}" wx:key="{{index}}" wx:for-item="task" wx:for-index="index">
+               <navigator url="/pages/lesson/teach/taskList?lesson_id={{lesson.lesson_id}}&date={{task.date}}">
+                <view class="weui-cell__bd">{{task.date}}的作业 （{{task.reviewCount}}/{{task.count}}）</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+              </navigator>
+            </block>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
